@@ -12,11 +12,12 @@ func foo() {
 
 func main() {
 	c := logx.LogConf{
-		Mode: "console",
+		Mode: "console", //console|file|volume
 		Path: "logs",
 	}
-	logx.MustSetup(c)
-	defer logx.Close()
+	logx.MustSetup(c) // logx 根据配置初始化
+
+	defer logx.Close() //关闭日志输出
 	logx.Info("info")
 	logx.Error("error")
 	logx.ErrorStack("hello")
@@ -26,5 +27,6 @@ func main() {
 	logx.Statf("%s stat %s", "hello", "world")
 	logx.WithDuration(time.Minute + time.Second).Info("hello")
 	logx.WithDuration(time.Minute + time.Second).Error("hello")
+
 	foo()
 }
