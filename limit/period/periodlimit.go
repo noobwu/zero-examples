@@ -27,6 +27,9 @@ var (
 func main() {
 	flag.Parse()
 
+	result := fmt.Sprintf("rdx:%s,redisType:%s,redisPass:%s,redisKey:%s ", *rdx, *rdxType, *rdxPass, *rdxKey) 
+	fmt.Println(result) 
+
 	store := redis.NewRedis(*rdx, *rdxType, *rdxPass)
 	fmt.Println(store.Ping())
 	lmt := limit.NewPeriodLimit(seconds, 5, store, *rdxKey)

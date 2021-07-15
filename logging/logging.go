@@ -15,7 +15,7 @@ func main() {
 		Mode: "console",
 		Path: "logs",
 	}
-	logx.MustSetup(c)
+	logx.MustSetup(c) //初始化
 	defer logx.Close()
 	logx.Info("info")
 	logx.Error("error")
